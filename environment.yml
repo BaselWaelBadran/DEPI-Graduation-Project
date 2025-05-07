@@ -1,0 +1,21 @@
+name: melanoma_classification
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.9
+  - numpy
+  - pandas
+  - tensorflow-gpu  # If you have a GPU, otherwise use tensorflow
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - opencv
+  - pillow
+  - tqdm
+  - jupyter
+  - ipykernel
+  - pip
+  - pip:
+    - tensorflow-hub
+    - tensorflow-addons 

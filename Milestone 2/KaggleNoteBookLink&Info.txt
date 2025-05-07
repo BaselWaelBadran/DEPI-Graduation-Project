@@ -1,0 +1,10 @@
+Team: Visioneers
+	• Basel Wael Abdel-Monem (Team Leader)
+	• Ismail Mohamed Al-Hetimi
+	• Shrouk Rashwan
+	• Samaa El-Tohamy
+	• Hager Sobhy
+	• Amr Khaled
+
+
+Kaggle Notebook Link: https://www.kaggle.com/code/baselwael56/melanomaclassificationproject-v2k

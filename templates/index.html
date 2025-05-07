@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melanoma Detection System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Melanoma Detection</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats">Stats</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#how-it-works">How It Works</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#try-it">Try It</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('history') }}">History</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold animate__animated animate__fadeIn">Early Detection Saves Lives</h1>
+                    <p class="lead animate__animated animate__fadeIn animate__delay-1s">
+                        Our advanced AI system helps detect melanoma at its earliest stages, 
+                        providing accurate and fast skin cancer screening.
+                    </p>
+                    <a href="#try-it" class="btn btn-primary btn-lg animate__animated animate__fadeIn animate__delay-2s">
+                        Try It Now
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image animate__animated animate__fadeIn animate__delay-1s">
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section id="stats" class="py-5 bg-light">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="stat-card animate__animated animate__fadeInUp">
+                        <h2 class="counter" data-target="95">0</h2><span class="counter-suffix">%</span>
+                        <p>5-year survival rate when detected early</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card animate__animated animate__fadeInUp animate__delay-1s">
+                        <h2 class="counter" data-target="1">0</h2><span class="counter-suffix">in 5</span>
+                        <p>Americans will develop skin cancer by age 70</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card animate__animated animate__fadeInUp animate__delay-2s">
+                        <h2 class="counter" data-target="94">0</h2><span class="counter-suffix">%</span>
+                        <p>Accuracy in detecting melanoma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">How It Works</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="step-card animate__animated animate__fadeInLeft">
+                        <div class="step-number">1</div>
+                        <h3>Upload Image</h3>
+                        <p>Take a clear photo of the skin lesion you want to analyze</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card animate__animated animate__fadeInLeft animate__delay-1s">
+                        <div class="step-number">2</div>
+                        <h3>AI Analysis</h3>
+                        <p>Our advanced AI model analyzes the image for signs of melanoma</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step-card animate__animated animate__fadeInLeft animate__delay-2s">
+                        <div class="step-number">3</div>
+                        <h3>Get Results</h3>
+                        <p>Receive immediate results with detailed analysis and recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Try It Section -->
+    <section id="try-it" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Try It Now</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="upload-container animate__animated animate__fadeIn">
+                        <div class="upload-area" id="dropZone">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3>Drag & Drop Image Here</h3>
+                            <p>or</p>
+                            <input type="file" id="fileInput" accept="image/*" class="d-none">
+                            <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                                Browse Files
+                            </button>
+                        </div>
+                        <div class="preview-container d-none" id="previewContainer">
+                            <img id="previewImage" class="img-fluid">
+                            <button class="btn btn-primary mt-3" id="analyzeBtn">Analyze Image</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-5 d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="results-card animate__animated animate__fadeIn">
+                        <h3 class="text-center mb-4">Analysis Results</h3>
+                        <div class="results-content">
+                            <div class="prediction-chart">
+                                <canvas id="predictionChart"></canvas>
+                            </div>
+                            <div class="recommendations mt-4">
+                                <h4>Recommendations</h4>
+                                <ul class="recommendations-list">
+                                    <!-- Recommendations will be populated dynamically -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Melanoma Detection System</h5>
+                    <p>Early detection saves lives. Get screened today.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2024 Melanoma Detection System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
